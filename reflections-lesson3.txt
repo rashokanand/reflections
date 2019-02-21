@@ -1,0 +1,17 @@
+Using a remote repository
+When would you want to use a remote repository rather than keeping all your work local?
+
+One reason might be when I know I would be using other systems to continue on my work rather than the present system. The remote
+repository would keep track of all my commits, and would be clonable wherever and whatever system I am using. I would be able to
+edit the files directly on the github website like now even.
+One more reason would be if I think I would like to collaborate on the project with more people.
+Git, for syncing with github, uses what is called a remote. This is short for remote repository. Before pushing a local repository
+on to github, it needs to be in the form of a remote repository. 
+  git remote
+The above command shows all the remotes existing in the repository presently.
+  git remote <remote_name> <github repo url>
+This creates a new remote for the local repo and sets the url to which the repository will be pushed or pulled from
+  git push remote_name branch_name
+pushes branch_name to remote_name through the url which was specified earlier.
+  git remote -v
+gives out verbose message about remotes and their link urls.
