@@ -1,0 +1,96 @@
+Reflections (Lesson 2)
+
+Initializing a repository
+
+After creating a folder to hold all the project files, it needs to be set up for it to be tracked by git. cd into that folder from git bash and then run the below command.
+
+    git init
+
+This initializes git on that folder. A .git folder containing all the meta data that git requires is created in the repository (the project folder in git terms is called a repository).
+
+
+    git status
+
+This command gives a snapshot of what changes are remaining to be commited, what files in the repo are being tracked and list of untracked files in the folder.
+Initializing a repository tells Git that I want to track changes over this project’s lifetime. All commits need to be saved and be restorable when called.
+
+How is ‘Staging Area’ different?
+
+Staging area is different from the working directory and the repository in that it contains file that have not been commit yet, but are being tracked. The staging area is a preliminary step to commit. In the staging area, we decide as to what files are going to be tracked and commit to the repo, in this step. In this step, we can stop and decide whether the change that is going to be commit indeed is a logical step and is worth being saved as a checkpoint.
+When git status is run on a repository, it gives out details regarding what files are being tracked, or are in the staging area presently. It tells exactly what files would be saved in the checkpoint when a commit is done now.
+Staging area’s value is to keep the user in the loop about what he or she exactly wants to do at any point of time. Whether all the files that he wants to track are indeed being tracked, or are they not. If yes then he can proceed to commit the tracked files, and if not, he can add changes, add the files to the staging area, and then commit.
+git add is the command to add a specified file to the staging (tracked file as seen in git status).
+
+Use staging area to ensure 1 logical change per commit
+
+While looking at Git status, we know what files are untracked and what files are going to be included in the commit if done now. At this point the individual can decide whether the files that are being added to be tracked are belonging to one logical change. If the complete files changed constitutes more than 1 logical change, then the commit can be split into more than one using the staging area to set the commit up each time, Git adding only the relevant files respectively.
+Even after adding tracked files to the staging area, it is beneficial to recheck using
+
+    git diff # gives the difference between the working dir and the staging area
+    git diff --staged #difference between last commit and the staging area
+
+hence ensuring you are going to commit only one logical change.
+
+When to use branches?
+
+When you would like to try out some experimental features out that you are not confident that you want to include in the final project, you create a branch. It helps to keep your project separate parallel in each branch. You can make changes to this new branch that you created, being confident that whatever you implement here stays separate from your original.
+To create a new branch use:
+
+    git branch <branch-name> 
+
+To see all the available branches presently in the repository:
+
+    git branch
+
+And to checkout another branch, other than the master:
+
+    git checkout <branch-name>
+
+The original branch is called the master (git terminology).
+After checking out some branch, you can add and commit changes to it, all the while keeping the master unaffected by any change you make. After you are done, you can switch back to the master branch using
+
+    git checkout master
+
+Some example use cases for branches would be if you want to make a language specific project separate. Maybe use a local language, all the while having the english original also. At a later point, you would ideally want to have a button in your application to switch languages, but creating the language specific version is the first step.
+
+Why to use diagrams
+
+When the project has become quite large and there are several branches to deal with, it becomes tricky navigating the commit history. Visualizing the commit history for each branch in a diagram becomes invaluable, as we know exactly how to reach a commit by checking out which branch. 
+Due to the branch structure of git, checking out of some commits while staying on one branch may be impossible at the present moment, unless that branch is checked out. Drawing out each branch with its respective commit history is a good way to keep oneself and the git repo organized.
+This dilemma is caused due to the commit being mapped to only its last commit (its parent). So checking out a commit would only happen if it is in the chain of parents of this commit you are in now. If the commit you want to checkout is not directly connected through the links of parents to the commit you’re in, say the commit is in a different branch, then there is now way you can check it out. First you have to git checkout that branch, then checkout that commit.
+
+Merging Branches
+
+After working on a separate branch there will come a time for implementing the new feature or code into the master branch. In git merging a branch with the master is termed ‘merging branch b into the master’, say the branch we are merging is branch b.
+Git is powerful in its merge capabilities. It compares the code of the present branch with the tip of the branch we are merging into. It combines the code keeping and deleting lines according to what happened till then looking at the commits. Then makes a single commit merging the two. Now the merge commit is the tip of the master branch, or whatever branch that was merged.
+
+    git merge branch1 branch2  #this can be used to specify which branches are going to be merged
+
+Care must be taken that the branch which is checked out currently is one of the branches that are being merged. Say you are in branch 3 and you are passing a command to merge branch1 and branch2. Git then automatically merges all three, even if you explicitly did not specify so. It makes sense for git that you would want to obviously merge the branch you are in, as you have made changes and you think now the code is right to be merged.
+If you are in branch2, then
+
+    git merge branch1
+
+would also work. It will go ahead and merge branch1 into branch2, it does not need 2 arguments. Later you can delete branch 1 by the command:
+
+    git branch -d branch1
+
+If you would like to view a visualization of all the branches and its commits, this command would be helpful:
+
+    git log --graph --oneline master branch1 ...
+
+After merging, git log shows all commits ordered by time stamp. Both branch’s commits will be accessible through the master branch. To see a diff of some commit over its direct parent, use this command:
+
+    git show commit_id
+    
+Git: Automatic vs manual merge
+
+Sometimes, if two branches have commits that have worked in the same general area of the code document, Git throws a merge conflict when merge is tried. Git, for better or worse, by itself does not try to guess at what change to keep and what to discard. It highlights changes and asks the user to rectify, keep or delete changes that are required. After all the conflicts are resolved, then the merge can happen.
+During a merge conflict, the file(s) that is causing the conflict message, is modified by git. It highlights all the parts of the code or text that has been changed by both branches.
+‘<<<<<<<’ <branch name> starts the code of the present head
+‘----------’ shows the code unedited by any of the branches (parent commit of both the branches)
+‘>>>>>>>’ <branch name2> this shows the code that is being merged into <branch name>
+After deleting or keeping the required code, delete the git annotations. Then the merge would be successful.
+Running ‘git status’ on a merge conflict, shows the files as ‘both edited’. 
+The advantage of manual merge in this case is that the correct parts of the code and the correct changes that need to be merged can be chosen on a case to case basis, as and when the merge conflict occurs. However the disadvantage is that, it may be time taking to go through each and every merge conflict. Sometimes the change that needs to be kept is very obvious leading to sometimes thinking, this needs to be automated by Git. But Git does not take any chances, and asks the user in every case. 
+Automating this would require a fairly complex machine learning algorithm that would on the go decide which part of the code is an improvement and which is not. As is the case in the present, this feature is not yet in git.

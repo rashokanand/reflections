@@ -1,0 +1,48 @@
+Reflection (Lesson 1)
+
+Windows File Compare
+
+On Windows there is a useful little command-line utility called file compare. (FC)
+When fed two file paths to it, it prompts line by line all the differences in the codes of the files. This utility works for comparing similar code files. If the program is very long and checking each file line by line is not possible manually, this utility shines.
+Using this in cmd as simple as calling ‘fc’ on two file paths separated by space.
+for example: fc file1.txt file2.txt
+
+While in powershell, I observed that the utility works, however file-compare needs to be called by fc.exe.
+fc.exe file1.txt file2.txt
+Very usefull to compare versions of code files quick and easy
+
+Manual commits in Git
+
+Commits in Git are like using Save as in Microsoft office applications. They may also be thought of as checkpoints along the completion of a project. Each checkpoint has a logical change or addition implemented in the project and a descriptive comment attached.
+As to the differences and preferences between manual and automatic file history saves, Git has only manual version control. A user needs to manually save the checkpoint, in this case a ‘commit’, to track each change that is worth tracking. There are both pros and cons for this. One advantage is that each change that is saved is logical as the user decides if the change or addition is significant enough that it merits an additional checkpoint. If the user is disciplined enough, this manual system helps in keeping commits just enough to have a proper track of all the changes through the projects timeline. 
+Sometimes though, the user may forget and continue implementing a lot of changes, forgetting that he or she needs to commit these changes. Here this may be a disadvantage compared to some other comparable VCS (Version control systems) that has automatic version history saving feature. Manual commits and other comparable systems transfers the responsibility of deciding when to and storing checkpoints on to the user.
+
+Multi file commits
+
+Code version control systems like Git has the option of tracking changes over several files at once. In the context of coding, sometimes it is necessary to make parallel changes in more than 1 file. For example there is  a .py file that references another .py file that contains some custom user created function that is imported into it. Then when there is some bug in the function code, or there is some addition in the function, both the files need to be changed at the same time. Here if the checkpoint saves the state of both the files before and after the change, tracking of the changes would be simpler and less time consuming.
+
+Using history for efficiency
+
+Having access to all the previously edited versions of some project, code document is like having a time machine at one’s disposal. Knowing later in time more efficient ways of doing something would be very easy to back implement in the previous versions and forward integrate into the present version. If the code document is long and winding, it is usually very hard to understand the thinking behind each line of code and each decision taken to follow some path and not take some paths. Having all the previous versions handy to back check and optimize helps in building efficiency in oneself as well as making the overall code more efficient.
+If presently you were working on a code that has a long version history, and you made some change. The program suddenly stops working as expected. Then there is no need to worry as you have a long list of past changes that worked for you in the past, and you just need to check back on what are the present changes that broke some existing functionality. Having version control is like building on one’s existing knowledge continuously.
+
+Using git to view history
+
+Through git, browsing through and analysing history is simple. Two commands need to be memorized and they are git log, and git diff.
+‘git log’ when run on the master directory of a repo, gives a complete edit (commit) history of the repo starting from the latest edit.
+‘git diff log1 log2’ compares the two edits line by line for changes (additions and deletions) in the code between the two commits. These commands unlock the power of version control of git.
+You need to have git installed in your computer for these commands to work
+
+Confidence from having version control
+
+Having version control for your fairly large project, would you have more confidence in taking risks and implementing changes that could potentially break something? Having a huge undo button that could restore the whole project to a former state that was working correctly, to potentially fall back on. Git works in this way. It stores all the changes, commits if you will, that you implemented along the journey your project took. It then allows you to explore all those changes along the way and modify and optimize all your previous work. And if you have implemented something that broke some existing functionality, you have the past version to fall back on and compare to find problems in the code. And hence fix them nice and easy.
+git checkout <commit id> is the syntax for operating this time machine of sorts.
+
+    git checkout <commit id>
+
+This restores all the files in the repository to the point in time when the commit was introduced. Using Git log, git diff in conjunction with git checkout, you have access to a scrollable undo history and you decide to what point you want your creation to restore to, and then compare each to find what went wrong (or right?!)
+
+What do I want to use Git for?
+
+Managing all my programming projects would be a nice start. In hindsight, any project, not only that involves coding, can be version controlled using Git. Having version control in my project is a comfort provider to go ahead and take greater risks, and not worry about breaking something that was working.
+I would create separate repositories for each of my projects and handle all of them through Git. Specifically I would use Git for GIS Times editing and compiling, any data analysis task that I am going to do in the future, and follow course assignments and projects.
