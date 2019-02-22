@@ -28,3 +28,17 @@ you have implemented or the collaborator's changes will be lost. While if you ch
 you and your collaborator will both work on the same repo, but on different branches, and manually push commits, safety checks have 
 been implemented. You may also want to control when to look for and merge changes on the shared repo, and not want it to push it down
 on you without your control.
+
+Forks, Clones, and Branches
+
+Clones are copies of a repository. Making a duplicate copy along with all the commits and branches of a git repository either from github
+to a local folder, or making a duplicate from local to local, is called cloning. You are essentially making a clone of the repository.
+
+Forks are clones of repositorys but only is said cloning is done on github. If there is a repository on github, that you want to make a 
+copy of in your own account, you can fork it. It is github's way of cloning a repository from one account to another account on its
+platform, without downloading to a local system.
+
+Branches are offshoots of a repository that stay independent of the master, or any other existing branch. If you want to work on the
+repo, on a new feature perhaps, but want a working version of the repo, say for others to use, you can create a new branch and work
+all you like on this branch. The other branches stay unaffected by any change you implement in your branch. And hence a working version
+of the code stays always available to end users.
