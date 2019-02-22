@@ -42,3 +42,18 @@ Branches are offshoots of a repository that stay independent of the master, or a
 repo, on a new feature perhaps, but want a working version of the repo, say for others to use, you can create a new branch and work
 all you like on this branch. The other branches stay unaffected by any change you implement in your branch. And hence a working version
 of the code stays always available to end users.
+
+Local copies of remote branches: Benefit of having last known state of remote locally
+
+A feature of the git remote is that the last known 'commit' state of the remote repository is stored in the repo. Say you have added
+a few commits to your local repo. Git status would then let you know that the branch you are working on is currently ahead of the remote
+by a couple of commits. This feature allows you to keep track of what are the commits that are yet to be pushed to the remote according
+to the last known state.
+Another advantage is when you have introduced commits and parallely some other collaborator has added commits to the remote repo. Now
+when a git fetch command is executed on the remote, the remote last known state is updated to include the commits by the collaborator.
+The added commits, if conflicting with your added commits, git raises a merge conflict. This helps you to recheck all the raised
+conflicts and finally merge the remote and the local branch. Again a 'git status' would tell you that the now local repo is ahead of the
+remote by a few commits including the merge commit. Hence the need to push changes.
+One thing to remember is that the 'Git pull' is two commands in one. A 'Git fetch' in conjunction with 'Git merge remote master' makes a
+'git pull'.
+
