@@ -15,3 +15,16 @@ This creates a new remote for the local repo and sets the url to which the repos
 pushes branch_name to remote_name through the url which was specified earlier.
   git remote -v
 gives out verbose message about remotes and their link urls.
+
+Manual versus Automatic pull
+
+Syncing automatically with the remote folder would sometimes make the project unusable, as there are some modifications being done
+at the moment in the code. It would take some logical commit into the repository to make the project working again. In a manual pull,
+another advantage is that only the branch(s) necessary can be pulled from the remote, or pushed through the remote. This quickens the
+pace of the sync and also consumes less data.
+Say you have created a repo and have linked it with one on github. Now you have started working on a feature on your local repo, all
+the while, one of the collaborators is also working on the same repo remotely. If github autosyncs, some or all of the changes that
+you have implemented or the collaborator's changes will be lost. While if you choose to manually sync at a later point, deciding that
+you and your collaborator will both work on the same repo, but on different branches, and manually push commits, safety checks have 
+been implemented. You may also want to control when to look for and merge changes on the shared repo, and not want it to push it down
+on you without your control.
