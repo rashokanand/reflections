@@ -57,3 +57,15 @@ remote by a few commits including the merge commit. Hence the need to push chang
 One thing to remember is that the 'Git pull' is two commands in one. A 'Git fetch' in conjunction with 'Git merge remote master' makes a
 'git pull'.
 
+How would you collaborate without using Git or Github? What would be easier and what would be harder?
+
+Collaborating on Git or Github can be harder too. If I had to collaborate without github, one thing that would be easier is the
+learning curve. Working with Git and Github takes some getting used to. And there are a lot of commands that need to be put to
+memory. I would probably use Google drive or dropbox. It keeps track of all items in a folder. As soon as I know that there
+has been some bug that was introduced, I can revert to the last version saved in the history log in google drive or dropbox.
+All of these tasks are wildly easier in those both. No thinking is required, and the versioning systems do their work non intrusively.
+The thing that gets harder is that when I want to search for an edit I made long in the past and I do not remember the exact date when.
+I have to recheck each auto saved version till I find what I am looking for, due to the fact that no comments are saved for any
+version. One more issue is that there would not be any proper control for collaborating. If someone else is also contributing to
+the same project, and they have write priviliges, they can replace the files without the owner interfering. The owner can only 
+revert back to a completely older version that contains none of the new changes, or keep all the changes. There is no middle ground.
