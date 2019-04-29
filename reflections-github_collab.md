@@ -32,3 +32,33 @@ one point of note is to always copy the https link and not the ssh link while
 creating the remote branch for a local repo. There are some technical reasons
 for this, but for now it is best to remember that the ssh link would require
 more work arounds than the http link.
+
+### To import commits in the remote repo
+
+```
+git pull origin master
+```
+The pull statement does three steps:
+- Fetches commits into the origin remote
+- Sets the local tracking branch 'origin/master' to the updated remote repo commits
+- Merges the 'origin/master' into the master branch.
+
+## Git fetch
+If there are unsynced commits in the remote branch of the repo, and there are further
+unsynced commits to the local repo over the last synced tracking branch, a git pull would
+not work correctly.
+You now need to do a fetch and merge and then push to get the remote and the local completely
+and perfectly in sync.
+
+```
+git fetch origin master  # Fetches the remote's master branch and merges into the
+                         # the remote tracking branch. [origin/master in most cases]
+
+git merge origin/master  # Merges the origin/master branch into the local master
+                         # Also gets the remote tracking branch and the local master branch
+                         # in sync.
+
+git push origin master   # Pushes the final commit history to the remote.
+                         # This brings everything back in sync [ the remote repo, the remote tracking
+                         # branch and the local master]
+```
