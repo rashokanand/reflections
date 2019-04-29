@@ -69,3 +69,11 @@ I have to recheck each auto saved version till I find what I am looking for, due
 version. One more issue is that there would not be any proper control for collaborating. If someone else is also contributing to
 the same project, and they have write priviliges, they can replace the files without the owner interfering. The owner can only 
 revert back to a completely older version that contains none of the new changes, or keep all the changes. There is no middle ground.
+
+When to use a separate branch
+
+When you are working on your repository alone and not collaborating much, then you may work directly on the master commiting for each
+logical change. But when you are collaborating with a bunch of other collaborators, then working on a separate branch and introducing
+features is the way to go. Each new addition must go through a pull request, so that others may look through your code and comment
+on them. All of your collaborators would then stay in the loop about the project's progress. Each can have a say in each added feature
+by viewing and choosing to comment on pull requests.
